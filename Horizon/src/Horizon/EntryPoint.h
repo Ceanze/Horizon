@@ -7,7 +7,11 @@ extern Horizon::Application* Horizon::createApplication();
 
 int main(int argc, char** argv)
 {
-	auto app = Horizon::createApplication();
+	Horizon::Logger::init();
+	HZ_ERROR("Testing");
+	HZ_CORE_INFO("Also testing");
+
+	Horizon::Application* app = Horizon::createApplication();
 	app->run();
 	delete app;
 }
