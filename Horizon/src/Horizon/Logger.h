@@ -1,8 +1,12 @@
 #pragma once
 #pragma 
 
-#include "Core.h"   
+#include "Core.h"
+
+#pragma warning(push ,3)
 #include "spdlog/spdlog.h"
+#pragma warning(pop)
+
 
 #pragma warning(push)
 #pragma warning(disable:4251)
