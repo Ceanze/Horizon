@@ -1,5 +1,9 @@
-#include "Logger.h"    
+#include "hrzpch.h"
+
+#pragma warning(push)
+#pragma warning( disable : 26439 26451 26495 26439 26451 26495 )
 #include "spdlog/sinks/stdout_color_sinks.h"
+#pragma warning(pop)
 
 
 namespace Horizon {

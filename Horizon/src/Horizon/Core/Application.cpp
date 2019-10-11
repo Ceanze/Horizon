@@ -1,3 +1,4 @@
+#include "hrzpch.h"
 #include "Application.h"
 
 namespace Horizon {

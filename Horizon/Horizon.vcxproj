@@ -12,14 +12,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Horizon.h" />
-    <ClInclude Include="src\Horizon\Application.h" />
-    <ClInclude Include="src\Horizon\Core.h" />
-    <ClInclude Include="src\Horizon\EntryPoint.h" />
-    <ClInclude Include="src\Horizon\Logger.h" />
+    <ClInclude Include="src\Horizon\Core\Application.h" />
+    <ClInclude Include="src\Horizon\Core\Core.h" />
+    <ClInclude Include="src\Horizon\Core\EntryPoint.h" />
+    <ClInclude Include="src\Horizon\Core\Logger.h" />
+    <ClInclude Include="src\Horizon\Events\EventBus.h" />
+    <ClInclude Include="src\Horizon\Events\Events.h" />
+    <ClInclude Include="src\hrzpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Horizon\Application.cpp" />
-    <ClCompile Include="src\Horizon\Logger.cpp" />
+    <ClCompile Include="src\Horizon\Core\Application.cpp" />
+    <ClCompile Include="src\Horizon\Core\Logger.cpp" />
+    <ClCompile Include="src\hrzpch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -67,8 +74,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Horizon\libs\spdlog\include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HRZ_PLATFORM_WINDOWS;HRZ_BUILD_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Horizon\libs\spdlog\include;$(SolutionDir)Horizon\src</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>hrzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -85,8 +94,10 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Horizon\libs\spdlog\include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HRZ_PLATFORM_WINDOWS;HRZ_BUILD_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Horizon\libs\spdlog\include;$(SolutionDir)Horizon\src</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>hrzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

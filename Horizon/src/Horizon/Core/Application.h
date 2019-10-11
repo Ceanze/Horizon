@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Horizon/Events/EventBus.h"
 
 namespace Horizon {
 

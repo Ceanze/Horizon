@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef HZ_PLATFORM_WINDOWS
-	#ifdef HZ_BUILD_DLL
+#ifdef HRZ_PLATFORM_WINDOWS
+	#ifdef HRZ_BUILD_DLL
 		#define HORIZON_API __declspec(dllexport)
 	#else
 		#define HORIZON_API __declspec(dllimport)
