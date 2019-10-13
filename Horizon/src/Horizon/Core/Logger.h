@@ -14,7 +14,7 @@
 
 namespace Horizon {
 
-	class HORIZON_API Logger
+	class Logger
 	{
 	public:
 		static void init();

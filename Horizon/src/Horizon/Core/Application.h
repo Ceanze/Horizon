@@ -5,7 +5,7 @@
 
 namespace Horizon {
 
-	class HORIZON_API Application
+	class Application
 	{
 	public:
 		Application();
