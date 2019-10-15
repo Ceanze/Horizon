@@ -4,7 +4,7 @@
 #include "Core.h"
 
 #pragma warning(push)
-#pragma warning( disable : 26439 26451 26495 26439 26451 26495 )
+#pragma warning( disable : 26439 26451 26495 26439 26451 26495 26812)
 #include "spdlog/spdlog.h"
 #pragma warning(pop)
 

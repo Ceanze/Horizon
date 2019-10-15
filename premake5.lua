@@ -33,6 +33,9 @@ workspace "Horizon"
 
 OUTPUT_DIR = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+libraryDirs = {}
+libraryDirs["GLFW"] = "Horizon/libs/GLFW"
+
 -- Functions for repeating project info
 
 -- Include all src files in the project
@@ -50,11 +53,12 @@ function setDirs()
 	objdir ("bin-int/" .. OUTPUT_DIR .. "/%{prj.name}")
 end
 
+
 -- Projects
 project "Horizon"
 	location "Horizon"
 	kind "StaticLib"
-	staticruntime "on"
+	--staticruntime "on"
 	cppdialect "C++17"
 
 	pchheader "hrzpch.h"
@@ -67,15 +71,22 @@ project "Horizon"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/libs/spdlog/include",
+		"%{libraryDirs.GLFW}/include"
+	}
+
+	libdirs
+	{
+		"%{libraryDirs.GLFW}/lib"
 	}
 
 	filter "system:windows"
 		systemversion "latest"
+		links { "opengl32" }
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
-	staticruntime "on"
+	--staticruntime "on"
 	cppdialect "C++17"
 
 	setDirs()
@@ -85,13 +96,21 @@ project "Sandbox"
 	{
 		"Horizon/libs/spdlog/include",
 		"Horizon/src",
-		"Horizon/libs"
+		"Horizon/libs",
+		"%{libraryDirs.GLFW}/include"
+	}
+
+	libdirs
+	{
+		"%{libraryDirs.GLFW}/lib"
 	}
 
 	links
 	{
-		"Horizon"
+		"Horizon",
+		"glfw3"
 	}
 
 	filter "system:windows"
 		systemversion "latest"
+		links { "opengl32" }

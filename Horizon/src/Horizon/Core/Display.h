@@ -4,11 +4,26 @@
 
 namespace Horizon
 {
+	struct DisplayProps
+	{
+		std::string title;
+		unsigned width;
+		unsigned height;
+		bool fullscreen;
+
+		DisplayProps(const std::string& title = "Hazel Engine",
+			unsigned int width = 1280,
+			unsigned int height = 720,
+			bool fullscreen = false)
+			: title(title), width(width), height(height), fullscreen(fullscreen)
+		{
+		}
+	};
 
 	class Display
 	{
 	public:
-		static Display* create(unsigned width = 720, unsigned height = 1024, std::string title = "Default Display", bool fullscreen = false);
+		static Display* create(const DisplayProps& props = DisplayProps());
 		static Display* get();
 		virtual ~Display() = default;
 
