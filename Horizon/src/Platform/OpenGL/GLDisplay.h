@@ -15,6 +15,7 @@ namespace Horizon
 		unsigned getWidth() const override;
 		unsigned getHeight() const override;
 		bool isFullscreen() const override;
+		bool isOpen() const override;
 
 		// Swap buffers
 		void update() override;

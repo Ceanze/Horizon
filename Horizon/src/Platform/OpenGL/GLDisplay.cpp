@@ -2,9 +2,12 @@
 #include "GLDisplay.h"
 
 #include <GLFW/glfw3.h>
+#include "Horizon/Events/EventBus.h"
 
 Horizon::Display* Horizon::Display::create(const DisplayProps& props)
 {
+	// TODO: Make sure if any previous display exists and delete that.
+
 	// Set the static display to GLDisplay
 	disp = new GLDisplay(props);
 	return disp;
@@ -13,6 +16,11 @@ Horizon::Display* Horizon::Display::create(const DisplayProps& props)
 static void GLFWErrorCallback(int error, const char* description)
 {
 	HRZ_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+}
+
+static void GLFWCloseCallback(GLFWwindow* window)
+{
+	glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
 Horizon::GLDisplay::GLDisplay(const DisplayProps& props)
@@ -40,8 +48,14 @@ bool Horizon::GLDisplay::isFullscreen() const
 	return this->props.fullscreen;
 }
 
+bool Horizon::GLDisplay::isOpen() const
+{
+	return !glfwWindowShouldClose(this->window);
+}
+
 void Horizon::GLDisplay::update()
 {
+	glfwPollEvents();
 	glfwSwapBuffers(this->window);
 }
 
@@ -69,5 +83,7 @@ void Horizon::GLDisplay::init(const DisplayProps& props)
 
 	glfwSetErrorCallback(GLFWErrorCallback);
 
-	glfwCreateWindow((int)props.width, (int)props.height, props.title.c_str(), nullptr, nullptr);
+	this->window = glfwCreateWindow((int)props.width, (int)props.height, props.title.c_str(), nullptr, nullptr);
+
+	glfwSetWindowCloseCallback(this->window, GLFWCloseCallback);
 }

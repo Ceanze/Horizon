@@ -8,7 +8,7 @@ namespace Horizon {
 
 	Application::Application()
 	{
-		Display::create();
+		this->display = Display::create();
 	}
 
 	Application::~Application()
@@ -18,6 +18,9 @@ namespace Horizon {
 
 	void Application::run()
 	{
-		while (true);
+		while (this->running && this->display->isOpen())
+		{
+			this->display->update();
+		}
 	}
 }

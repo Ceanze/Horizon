@@ -5,6 +5,8 @@
 
 namespace Horizon {
 
+	class Display;
+
 	class Application
 	{
 	public:
@@ -12,6 +14,10 @@ namespace Horizon {
 		virtual ~Application();
 
 		void run();
+
+	private:
+		Display* display = nullptr;
+		bool running = true;
 	};
 
 	// To be defined in the client

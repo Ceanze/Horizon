@@ -14,6 +14,9 @@
 
 // UNSUBSCRIBE IS THE SAME AS SUBCRIBE
 
+// x: this, y: ClassName::functionName
+#define EVENTBUS_SUB(x, y) (EventBus::get().subscribe(x, &y))
+
 namespace Horizon {
 
 	//In order to have different MemberFunctionHandlers in a list we use a base class to use in the list instead
@@ -25,7 +28,7 @@ namespace Horizon {
 			call(evnt);
 		}
 
-		unsigned int id;
+		unsigned int id = 0;
 	private:
 		virtual void call(Event* evnt) = 0;
 	};

@@ -30,6 +30,7 @@ namespace Horizon
 		virtual unsigned getWidth() const = 0;
 		virtual unsigned getHeight() const = 0;
 		virtual bool isFullscreen() const = 0;
+		virtual bool isOpen() const = 0;
 
 		// Swap buffers
 		virtual void update() = 0;
